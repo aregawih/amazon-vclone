@@ -20,8 +20,6 @@ function Results() {
       
 }, [])
     
-
-
   return (
     <LayOut>
       <section>
