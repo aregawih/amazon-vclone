@@ -57,12 +57,12 @@ const addToCart = ()=>{
           {/* price  */}
           <CurrencyFormat amount={price} />
         </div>
+
         {
-        renderAdd && <button className={classes.button} onClick={addToCart}>
-          add to cart
-        </button>
+          renderAdd && <button className={classes.button} onClick={addToCart}>
+            add to cart
+          </button>
         }
-        
       </div>
     </div>
   );
