@@ -9,6 +9,9 @@ import { DataContext } from "../DataProvider/DataProvider";
 
 function Header() {
   const[{basket},dispatch]=useContext(DataContext)
+  const totalItem=basket?.reduce((amount,item)=>{
+    return item.amount + amount
+  },0)
   return (
     <section className={classes.fixed}>
       <div className={classes.header__container}>
@@ -21,7 +24,7 @@ function Header() {
           </Link>
           <div className={classes.delivery}>
             <span>
-        <SlLocationPin />
+              <SlLocationPin />
             </span>
             <div>
               <p>Delivered to</p>
@@ -31,33 +34,36 @@ function Header() {
         </div>
         {/* Search Section  */}
         <div className={classes.search}>
-            <select name="" id="">
-                <option value="">All</option>
-            </select>
-            <input type="text" />
-            <IoIosSearch />
+          <select name="" id="">
+            <option value="">All</option>
+          </select>
+          <input type="text" />
+          <IoIosSearch />
         </div>
         {/* Order Section  */}
 
         <div className={classes.order__container}>
-            <Link to="" className={classes.language}>
-                <img src="https://cdn.britannica.com/33/4833-004-828A9A84/Flag-United-States-of-America.jpg" alt="" />
-                <select name="" >
-                    <option value="">EN</option>
-                </select>
-            </Link>
-            <Link to="/auth">
+          <Link to="" className={classes.language}>
+            <img
+              src="https://cdn.britannica.com/33/4833-004-828A9A84/Flag-United-States-of-America.jpg"
+              alt=""
+            />
+            <select name="">
+              <option value="">EN</option>
+            </select>
+          </Link>
+          <Link to="/auth">
             <p>Sign In</p>
-             <span>Account & Lists</span>
-            </Link>
-            <Link to="/orders">
+            <span>Account & Lists</span>
+          </Link>
+          <Link to="/orders">
             <p>Returns</p>
             <span>& Orders</span>
-            </Link>
-            <Link to="/cart" className={classes.cart}>
-            <IoCart size={30}/>
-            <span>{basket.length}</span>
-            </Link>
+          </Link>
+          <Link to="/cart" className={classes.cart}>
+            <IoCart size={30} />
+            <span>{totalItem}</span>
+          </Link>
         </div>
       </div>
       <LowerHeader />
